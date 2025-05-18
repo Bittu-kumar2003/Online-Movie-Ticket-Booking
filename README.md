@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Online Movie Ticket Booking System</title>
+</head>
+<body>
 
 <h1>🎬 Online Movie Ticket Booking System</h1>
 
@@ -110,12 +118,19 @@ PORT=5000</code></pre>
 
 <hr>
 
+<h2>📎 Project Materials</h2>
+<ul>
+  <li><a href="https://drive.google.com/file/d/your_ppt_id/view?usp=sharing" target="_blank">📊 Project Presentation (PPT)</a></li>
+  <li><a href="https://drive.google.com/file/d/your_report_id/view?usp=sharing" target="_blank">📝 Project Report (PDF)</a></li>
+</ul>
+
+<hr>
+
 <h2>📞 Contact Details</h2>
 <ul>
   <li><strong>Name:</strong> Bittu Kumar</li>
-  <li><strong>Email:</strong> bittu.kumar@example.com</li>
-  <li><strong>Phone:</strong> +91-9876543210</li>
-  <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/bittukumar" target="_blank">linkedin.com/in/bittukumar</a></li>
+  <li><strong>Email:</strong> bittukumarprajapati2003@gmail.com</li>
+  <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/bittu-kumar-812368246/" target="_blank">linkedin.com/in/bittukumar</a></li>
 </ul>
 
 <hr>
