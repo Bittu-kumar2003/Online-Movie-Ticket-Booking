@@ -110,12 +110,12 @@ PORT=5000</code></pre>
 
 <hr>
 
-<h2>📌 Future Improvements</h2>
+<h2>📞 Contact Details</h2>
 <ul>
-  <li>Authentication for users and admins</li>
-  <li>Payment gateway integration</li>
-  <li>Movie filters by date, genre, or language</li>
-  <li>Seat selection and real-time availability</li>
+  <li><strong>Name:</strong> Bittu Kumar</li>
+  <li><strong>Email:</strong> bittu.kumar@example.com</li>
+  <li><strong>Phone:</strong> +91-9876543210</li>
+  <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/bittukumar" target="_blank">linkedin.com/in/bittukumar</a></li>
 </ul>
 
 <hr>
