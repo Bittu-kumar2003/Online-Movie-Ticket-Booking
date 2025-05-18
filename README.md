@@ -100,17 +100,16 @@ PORT=5000</code></pre>
 <h2>🖼️ Screenshots</h2>
 
 <h4>Homepage</h4>
-<img src="![Screenshot (150)](https://github.com/user-attachments/assets/a0c79b46-2b3d-4aed-9bdb-815d7c3fd662)
-" alt="Homepage" width="600">
+
+![Screenshot (150)](https://github.com/user-attachments/assets/a0c79b46-2b3d-4aed-9bdb-815d7c3fd662)
 
 <h4>Booking Page</h4>
-<img src="![Screenshot (170)](https://github.com/user-attachments/assets/eb97787b-c42d-4033-9e9d-a09db09ef17d)
-" width="600">
+
+![Screenshot (170)](https://github.com/user-attachments/assets/eb97787b-c42d-4033-9e9d-a09db09ef17d)
 
 <h4>Confirmation Page</h4>
-<img src="![Screenshot (179)](https://github.com/user-attachments/assets/4be0c024-d50f-4ed1-93b0-fb7ec4c6ac8e)
-" alt="Confirmation Page" width="600">
 
+![Screenshot (179)](https://github.com/user-attachments/assets/4be0c024-d50f-4ed1-93b0-fb7ec4c6ac8e)
 <hr>
 
 <h2>📎 Project Materials</h2>
