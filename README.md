@@ -1,39 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Online Movie Ticket Booking - Documentation</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 40px;
-      line-height: 1.6;
-    }
-    h1, h2, h3 {
-      color: #333;
-    }
-    pre {
-      background: #f4f4f4;
-      padding: 10px;
-      border-radius: 6px;
-      overflow-x: auto;
-    }
-    code {
-      background-color: #eee;
-      padding: 2px 6px;
-      border-radius: 4px;
-    }
-    ul {
-      margin-left: 20px;
-    }
-    img {
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      margin: 10px 0;
-    }
-  </style>
-</head>
-<body>
 
   <h1>🎬 Online Movie Ticket Booking System</h1>
 
