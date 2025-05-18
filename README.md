@@ -2,127 +2,199 @@
 
 <h1>🎬 Online Movie Ticket Booking System</h1>
 
-<p>This is a full-stack web application that allows users to browse movies, book tickets, and receive booking confirmations. Built using the MERN stack (MongoDB, Express, React, Node.js), it provides a smooth and responsive user experience for online movie ticket booking.</p>
+<p>This is a complete full-stack web application that allows users to browse movies, select showtimes, and book tickets online. It also includes a secure payment gateway using <strong>Stripe</strong> to complete transactions. The system is built using the <strong>MERN</strong> stack (MongoDB, Express.js, React.js, Node.js) and styled with responsive design principles.</p>
 
 <hr>
 
-<h2>📂 Project Structure</h2>
+<h2>📁 Project Structure</h2>
 
 <pre>
 online-movie-ticket-booking/
 │
-├── backend/                  # Backend files and server logic
-│   ├── config/               # Database configuration
-│   ├── controllers/          # Controller functions for booking logic
-│   ├── models/               # Mongoose models for MongoDB
-│   ├── routes/               # Express routes for APIs
-│   ├── server.js             # Entry point for Express server
-│   └── .env                  # Environment variables (e.g., DB URI)
+├── backend/                  
+│   ├── config/               # MongoDB and Stripe configuration
+│   │   └── db.js
+│   ├── controllers/          
+│   │   └── bookingController.js
+│   ├── models/               
+│   │   └── Booking.js
+│   ├── routes/               
+│   │   └── bookingRoutes.js
+│   ├── server.js             # Express server entry
+│   └── .env                  # Environment variables
 │
-├── frontend/                 # React-based frontend application
-│   ├── public/               # Static public files
+├── frontend/                 
+│   ├── public/
 │   ├── src/
-│   │   ├── components/       # Navbar and Footer components
-│   │   ├── pages/            # Home and Booking pages
-│   │   ├── App.jsx           # Main App component
-│   │   └── main.jsx          # React app bootstrap
-│   └── package.json          # Frontend dependencies
+│   │   ├── components/
+│   │   │   └── Navbar.jsx
+│   │   │   └── Footer.jsx
+│   │   ├── pages/
+│   │   │   └── Home.jsx
+│   │   │   └── Booking.jsx
+│   │   │   └── Payment.jsx       # Stripe Checkout Integration
+│   │   ├── App.jsx
+│   │   └── main.jsx
+│   └── package.json
 │
-├── screenshots/              # Screenshots of the application
+├── screenshots/
 │   ├── homepage.png
 │   ├── booking-page.png
-│   └── confirmation-page.png
+│   ├── confirmation-page.png
 │
-├── README.md                 # Project documentation
-├── package.json              # Root dependencies (if any)
+├── README.md
+├── package.json (root)
 </pre>
 
 <hr>
 
-<h2>🚀 Features</h2>
+<h2>💳 Payment Integration (Stripe)</h2>
 
-<ul>
-  <li>User-friendly interface to browse and book movie tickets</li>
-  <li>View available movies and showtimes</li>
-  <li>Booking confirmation with ticket details</li>
-  <li>Responsive design compatible with mobile and desktop</li>
-  <li>Node.js + Express.js backend with RESTful APIs</li>
-  <li>MongoDB for data persistence</li>
-</ul>
+<p>The payment functionality is implemented using the <strong>Stripe API</strong>. Users are redirected to a secure Stripe Checkout page to complete their payment.</p>
 
-<hr>
-
-<h2>🛠️ Technologies Used</h2>
-
-<ul>
-  <li><strong>Frontend:</strong> React.js, HTML, CSS, JavaScript</li>
-  <li><strong>Backend:</strong> Node.js, Express.js</li>
-  <li><strong>Database:</strong> MongoDB (Mongoose)</li>
-  <li><strong>Other Tools:</strong> Vite, Axios, Dotenv</li>
-</ul>
-
-<hr>
-
-<h2>⚙️ How to Run the Project</h2>
-
-<h3>Backend Setup</h3>
+<h3>Backend Stripe Configuration</h3>
 <ol>
-  <li>Navigate to the <code>backend/</code> folder:</li>
-  <pre><code>cd backend</code></pre>
+  <li>Install Stripe using npm:</li>
+  <pre><code>npm install stripe</code></pre>
 
+  <li>Set up your Stripe key in the <code>.env</code> file:</li>
+  <pre><code>STRIPE_SECRET_KEY=your_stripe_secret_key</code></pre>
+
+  <li>In <code>bookingController.js</code>, create a Stripe session:</li>
+  <pre><code>
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+
+exports.createCheckoutSession = async (req, res) => {
+  const session = await stripe.checkout.sessions.create({
+    payment_method_types: ["card"],
+    line_items: [{
+      price_data: {
+        currency: "usd",
+        product_data: {
+          name: "Movie Ticket",
+        },
+        unit_amount: 1000, // $10
+      },
+      quantity: 1,
+    }],
+    mode: "payment",
+    success_url: "http://localhost:5173/confirmation",
+    cancel_url: "http://localhost:5173/booking",
+  });
+
+  res.json({ id: session.id });
+};
+  </code></pre>
+</ol>
+
+<h3>Frontend Stripe Integration</h3>
+<ol>
+  <li>Install the Stripe frontend library:</li>
+  <pre><code>npm install @stripe/stripe-js</code></pre>
+
+  <li>In <code>Payment.jsx</code>, add this code:</li>
+  <pre><code>
+import { loadStripe } from '@stripe/stripe-js';
+
+const stripePromise = loadStripe('your_stripe_publishable_key');
+
+const handleCheckout = async () => {
+  const res = await fetch('http://localhost:5000/api/booking/create-checkout-session', {
+    method: 'POST',
+  });
+  const data = await res.json();
+  const stripe = await stripePromise;
+  await stripe.redirectToCheckout({ sessionId: data.id });
+};
+  </code></pre>
+</ol>
+
+<hr>
+
+<h2>👩‍💻 Real-life Use Case: Isha's Ticket Booking</h2>
+
+<p><strong>Isha</strong> visits the movie booking website to watch her favorite film. She browses the homepage, selects a movie, chooses a showtime, and proceeds to the booking page.</p>
+
+<ul>
+  <li>She fills in her name, email, and the number of tickets</li>
+  <li>Clicks on “Proceed to Payment”</li>
+  <li>The system redirects her to the <strong>Stripe Checkout</strong> page</li>
+  <li>She enters her card details securely and submits</li>
+  <li>She is redirected to the <strong>confirmation page</strong> with a booking ID and message: "Thank you, Isha! Your ticket has been booked!"</li>
+</ul>
+
+<p>This demonstrates how the system handles a full booking lifecycle from selection to payment and confirmation.</p>
+
+<hr>
+
+<h2>🔧 How to Setup and Run the Project</h2>
+
+<h3>Backend</h3>
+<ol>
+  <li>Navigate to backend folder:</li>
+  <pre><code>cd backend</code></pre>
   <li>Install dependencies:</li>
   <pre><code>npm install</code></pre>
-
-  <li>Create a <code>.env</code> file with the following content:</li>
-  <pre><code>MONGO_URI=your_mongodb_connection_string
-PORT=5000</code></pre>
-
-  <li>Start the backend server:</li>
+  <li>Create <code>.env</code> with your own keys:</li>
+  <pre><code>
+MONGO_URI=your_mongo_uri
+STRIPE_SECRET_KEY=your_stripe_secret_key
+PORT=5000
+  </code></pre>
+  <li>Run the server:</li>
   <pre><code>npm start</code></pre>
 </ol>
 
-<h3>Frontend Setup</h3>
+<h3>Frontend</h3>
 <ol>
-  <li>Navigate to the <code>frontend/</code> folder:</li>
+  <li>Navigate to frontend folder:</li>
   <pre><code>cd frontend</code></pre>
-
   <li>Install dependencies:</li>
   <pre><code>npm install</code></pre>
-
-  <li>Start the React development server:</li>
+  <li>Run the frontend app:</li>
   <pre><code>npm run dev</code></pre>
 </ol>
 
-<h3>Access the App</h3>
-<p>Visit <code>http://localhost:5173</code> in your browser to use the app.</p>
+<p>Open your browser and go to <code>http://localhost:5173</code></p>
+
+<hr>
+
+<h2>🎨 Features</h2>
+<ul>
+  <li>Search and view upcoming movies</li>
+  <li>Book tickets for different shows</li>
+  <li>Secure payment gateway using Stripe</li>
+  <li>Confirmation page with booking reference</li>
+  <li>Responsive UI design</li>
+</ul>
 
 <hr>
 
 <h2>🖼️ Screenshots</h2>
 
 <h4>Homepage</h4>
-<img src="./screenshots/homepage.png" alt="Homepage" width="600">
+<img src="./screenshots/homepage.png" alt="Homepage" width="600" />
 
 <h4>Booking Page</h4>
-<img src="./screenshots/booking-page.png" alt="Booking Page" width="600">
+<img src="./screenshots/booking-page.png" alt="Booking Page" width="600" />
 
 <h4>Confirmation Page</h4>
-<img src="./screenshots/confirmation-page.png" alt="Confirmation Page" width="600">
+<img src="./screenshots/confirmation-page.png" alt="Confirmation Page" width="600" />
 
 <hr>
 
-<h2>📌 Future Improvements</h2>
+<h2>📌 Future Enhancements</h2>
 <ul>
-  <li>Authentication for users and admins</li>
-  <li>Payment gateway integration</li>
-  <li>Movie filters by date, genre, or language</li>
-  <li>Seat selection and real-time availability</li>
+  <li>User authentication (login/signup)</li>
+  <li>Admin panel for adding/editing movies and schedules</li>
+  <li>Seat selection UI</li>
+  <li>Email notifications on successful booking</li>
 </ul>
 
 <hr>
 
-<h2>🙌 Contributing</h2>
-<p>Contributions are welcome! Please fork this repository and submit a pull request for any improvements.</p>
+<h2>🤝 Contributing</h2>
+<p>If you would like to contribute, please fork this repository and submit a pull request.</p>
 
 <hr>
 
