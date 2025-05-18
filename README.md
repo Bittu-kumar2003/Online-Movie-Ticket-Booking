@@ -100,20 +100,23 @@ PORT=5000</code></pre>
 <h2>🖼️ Screenshots</h2>
 
 <h4>Homepage</h4>
-<img src="./screenshots/homepage.png" alt="Homepage" width="600">
+<img src="![Screenshot (150)](https://github.com/user-attachments/assets/a0c79b46-2b3d-4aed-9bdb-815d7c3fd662)
+" alt="Homepage" width="600">
 
 <h4>Booking Page</h4>
-<img src="./screenshots/booking-page.png" alt="Booking Page" width="600">
+<img src="![Screenshot (170)](https://github.com/user-attachments/assets/eb97787b-c42d-4033-9e9d-a09db09ef17d)
+" width="600">
 
 <h4>Confirmation Page</h4>
-<img src="./screenshots/confirmation-page.png" alt="Confirmation Page" width="600">
+<img src="![Screenshot (179)](https://github.com/user-attachments/assets/4be0c024-d50f-4ed1-93b0-fb7ec4c6ac8e)
+" alt="Confirmation Page" width="600">
 
 <hr>
 
 <h2>📎 Project Materials</h2>
 <ul>
-  <li><a href="https://drive.google.com/file/d/your_ppt_id/view?usp=sharing" target="_blank">📊 Project Presentation (PPT)</a></li>
-  <li><a href="https://drive.google.com/file/d/your_report_id/view?usp=sharing" target="_blank">📝 Project Report (PDF)</a></li>
+  <li><a href="https://docs.google.com/presentation/d/1vZ3oIP7vP2P8_uAFkmUfdUaVqt4TOWg9/edit?usp=sharing&ouid=115248835274742376669&rtpof=true&sd=true">📊 Project Result (PPT)</a></li>
+  <li><a href="https://drive.google.com/file/d/1SzRJicWLQ8pZzS-NHt9uAzhf0h9SC9Ch/view?usp=sharing">📝 Project Report (PDF)</a></li>
 </ul>
 
 <hr>
@@ -129,11 +132,4 @@ PORT=5000</code></pre>
 
 <h2>🙌 Contributing</h2>
 <p>Contributions are welcome! Please fork this repository and submit a pull request for any improvements.</p>
-
-<hr>
-
-<h2>📄 License</h2>
-<p>This project is licensed under the MIT License.</p>
-
-</body>
 </html>
